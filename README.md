@@ -6,8 +6,6 @@ Groovy, Springboot, Gradle, Spock, Thymeleaf, Swagger2.
 #### Github Repository:  
 Download project from the following git repository https://github.com/cranganathan-infy/fizzbuzz
 
-**Hosted Instance Swagger endpoint(Hosted in Heroku:**
-
 #### To run the application:  
 Download the project. Navigate to the project folder and run **./gradlew bootRun**   
 Read the API documentation in local
