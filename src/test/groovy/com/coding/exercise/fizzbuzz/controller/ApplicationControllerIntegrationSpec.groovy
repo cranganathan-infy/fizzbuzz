@@ -28,7 +28,7 @@ class ApplicationControllerIntegrationSpec extends FizzbuzzApplicationAbstractIn
         mockMvc = webAppContextSetup(this.wac).build()
 
         when:
-        MvcResult result = mockMvc.perform(get('/index')).andReturn()
+        MvcResult result = mockMvc.perform(get('/')).andReturn()
 
         then:
         result.response.status == HttpStatus.OK.value()
