@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/styles.css" rel="stylesheet"/>
+    <title>Fizz Buzz App</title>
+</head>
+<body>
+<p><label>InputData:</label>
+<label th:text="${fizzBuzzData.inputValue}"></label></body></p>
+<!--<ul th:label="></ul>-->
+<p><label>Results:</label></p>
+
+<tbody th:each="result : ${fizzBuzzData.outputValues}">
+    <ul th:text="${result}"></ul>
+</tbody>
+    <p><a th:href="@{/}">Calculate again</a></p>
+
+</body>
+</html>

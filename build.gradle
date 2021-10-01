@@ -1,0 +1,71 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'war'
+    id 'groovy'
+    id 'jacoco'
+}
+
+war { enabled = true }
+
+group = 'com.coding.exercise'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.4.RELEASE'
+    implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.3.4.RELEASE')
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:2.3.4.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-log4j2"
+    implementation group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.5.6'
+
+
+    testCompile('org.spockframework:spock-core:1.3-groovy-2.5')
+    testCompile('org.spockframework:spock-spring:1.3-groovy-2.5')
+    testCompile "info.solidsoft.spock:spock-global-unroll:0.5.0"
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    //Swagger
+    implementation "io.springfox:springfox-swagger2:2.6.1"
+    implementation "io.springfox:springfox-swagger-ui:2.6.1"
+
+    compile group: 'org.apache.logging.log4j', name: 'log4j-1.2-api', version: '2.2'
+}
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
+bootRun {
+    main = 'com.coding.exercise.fizzbuzz.FizzbuzzApplication'
+    systemProperties = System.properties
+    systemProperties.remove('java.endorsed.dirs')
+}
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports {
+        html.enabled true
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+    reportsDir = file("$buildDir/jacoco")
+}
+
+springBoot {
+    buildInfo()
+}
