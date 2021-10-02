@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.3.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'war'
     id 'groovy'
     id 'jacoco'
 }
@@ -12,6 +13,8 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 repositories {
     mavenCentral()
 }
+
+war { enabled = true }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.3.4.RELEASE'
