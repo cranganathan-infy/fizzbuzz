@@ -6,8 +6,6 @@ plugins {
     id 'jacoco'
 }
 
-war { enabled = true }
-
 group = 'com.coding.exercise'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_1_8
